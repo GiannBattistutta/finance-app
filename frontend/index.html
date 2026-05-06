@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finance App</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <!-- AUTH SCREEN -->
+  <div id="auth-screen" class="screen">
+    <div class="auth-box">
+      <div class="logo">💰 Finance</div>
+      <div class="tabs">
+        <button class="tab active" onclick="switchTab('login')">Login</button>
+        <button class="tab" onclick="switchTab('register')">Register</button>
+      </div>
+      <div id="auth-error" class="error-msg hidden"></div>
+      <input id="auth-email" type="email" placeholder="Email" />
+      <input id="auth-password" type="password" placeholder="Password" />
+      <button class="btn-primary" onclick="handleAuth()">Continue</button>
+    </div>
+  </div>
+
+  <!-- DASHBOARD SCREEN -->
+  <div id="dashboard-screen" class="screen hidden">
+    <nav>
+      <div class="nav-logo">💰 Finance</div>
+      <div class="nav-user">
+        <span id="nav-email"></span>
+        <button class="btn-logout" onclick="logout()">Logout</button>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Summary Cards -->
+      <div class="cards">
+        <div class="card income">
+          <div class="card-label">Income</div>
+          <div class="card-value" id="total-income">$0.00</div>
+        </div>
+        <div class="card expense">
+          <div class="card-label">Expenses</div>
+          <div class="card-value" id="total-expense">$0.00</div>
+        </div>
+        <div class="card balance">
+          <div class="card-label">Balance</div>
+          <div class="card-value" id="total-balance">$0.00</div>
+        </div>
+      </div>
+
+      <!-- Add Transaction -->
+      <div class="section">
+        <h2>Add Transaction</h2>
+        <div class="form-row">
+          <input id="t-title" type="text" placeholder="Title" />
+          <input id="t-amount" type="number" placeholder="Amount" min="0.01" step="0.01" />
+          <select id="t-type">
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+          <input id="t-category" type="text" placeholder="Category (optional)" />
+          <button class="btn-primary" onclick="addTransaction()">Add</button>
+        </div>
+        <div id="form-error" class="error-msg hidden"></div>
+      </div>
+
+      <!-- Transactions List -->
+      <div class="section">
+        <h2>Transactions</h2>
+        <div id="transactions-list">
+          <div class="empty-state">No transactions yet.</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
