@@ -2,7 +2,6 @@ from sqlalchemy.orm import Session
 from passlib.context import CryptContext
 from jose import jwt
 from datetime import datetime, timedelta
-from dotenv import load_dotenv
 from app import models, schemas
 import os
 
